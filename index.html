@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Content Catalog</title>
-<style>
-  body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      
+    }
 
 /* Navbar container */
 .navbar {
@@ -52,47 +54,125 @@
   cursor: pointer;
   font-size: 14px;
 }
-/* Banner Styling */
-.banner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(to right, #e57a1f, #fbd04c);
-  padding: 30px 60px;
-  color: white;
-  text-align: center;
-  
+@media (max-width: 768px) {
+  .heading-and-button {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .site-name {
+    font-size: 10px;
+  }
+
+  .admin-button {
+  font-size: 8px;
+  border-radius:8px;
+
+   
+  }
+
+  .navbar-left {
+    width: 100%;
+    display: flex;
+    align-items: center;
+   
+  }
+
+  .logo {
+    height: 30px;
+    width: 30px;
+  }
 }
 
-/* Left Side Text */
-.banner-left {
-  flex: 1;
+    .banner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content:center;
+      background: linear-gradient(to right, #e57a1f, #fbd04c 100%, transparent 10%);
+      min-height: 300px;
+      padding: 40px 60px;
+      color: white;
+      overflow: hidden;
+    }
 
-}
+    /* Right-side image for desktop, full cover for mobile */
+    .banner::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 75%;
+      background: url('Masal2.png') no-repeat right center;
+      background-size: cover;
+      z-index: 1;
+    }
 
-.banner-left h2 {
-  margin: 0;
-  font-size: 32px;
-  font-weight: bold;
-}
+    .banner-left {
+      position: relative;
+      z-index: 2;
+      max-width: 70%;
+       text-align: center;
+      margin: auto;
+    }
 
-.banner-left p {
-  margin: 10px 0;
-  font-size:16px;
-}
+    .banner-left h2 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: bold;
+    }
 
-.banner-left .en {
-    margin:20px 0;
-  font-size: 16px;
-  color: #f5f5dc;
-}
+    .banner-left p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
 
-/* Right Side Image */
-.banner-right img {
-  height: 200px;
-  width: auto;
-}
-/* Search Panel*/
+    .banner-left .en {
+      margin: 20px 0;
+      font-size: 16px;
+      color: #f5f5dc;
+    }
+
+    @media (max-width: 768px) {
+      .banner {
+        flex-direction: column;
+        align-items:center;
+        background: none;
+        padding: 20px;
+      }
+
+      .banner::before {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-position:  center;
+        background-size: cover;
+        opacity: 0.25; /* Optional: slightly fade image behind text on mobile */
+      }
+
+      .banner-left {
+        max-width: 100%;
+        z-index: 2;
+         text-align: center;
+      }
+
+      .banner-left h2 {
+        font-size: 24px;
+        text-align: center;
+        color:black;
+      }
+
+      .banner-left p,
+      .banner-left .en {
+        font-size: 14px;
+        text-align: center;
+        color:black;
+      }
+    }
+    /* Search Panel*/
 
  .search-box {
       background: white;
@@ -134,33 +214,36 @@
     }
 
     .top-search-row input[type="text"] {
-      flex: 1;
-      padding: 12px 16px;
+      flex:1;
+      padding: 8px 12px;
       border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 14px;
+      border-radius: 4px;
+      font-size: 20px;
+     
+     
     }
 
     .search-button {
       background: #ffc107;
       border: none;
-      padding: 12px 22px;
+      padding: 12px 30px;
       font-weight: bold;
       font-size: 12px;
       border-radius: 10px;
       cursor: pointer;
       color: black;
+     
     }
+   
 
      .search-input {
-      width: 100%;
-      padding: 12px 14px;
-      font-size: 14px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-       margin-bottom: 50px;
-    }
-    .filter-grid {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+     .filter-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
@@ -186,26 +269,45 @@
       border: 1px solid #ccc;
       font-size: 14px;
     }
-    /*Box*/
-    .stats-container {
-      display:flex;
-      gap: 20px;
-      justify-content: center;
-      /*padding:40px 40px;*/
-      flex-wrap: wrap;
-      max-width: 1300px;
-      margin: 0 40px;
-      /*border-radius: 12px;*/
-    
-      
+     @media (max-width: 600px) {
+  .search-header h2 {
+    font-size: 18px;
+  }
+
+  .simple-search-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .top-search-row {
+    flex-direction: column;
+ 
+  }
+
+  .search-button {
+    width: 40%;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .filter-group label {
+    font-size: 13px;
+  }
 }
+ .stats-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 40px 20px;
+    }
+
     .stat-box {
-      background: white;
+      background: transparent;
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
       text-align: center;
-      /*flex: 1 1 200px;*/
       width: 200px;
       transition: transform 0.2s ease;
     }
@@ -216,16 +318,23 @@
 
     .stat-box h2 {
       font-size: 24px;
-      color: #1a1a1a;
-     margin-bottom: 6px;
+      color:#0d6efd;
+      margin-bottom: 6px;
     }
 
     .stat-box p {
       font-size: 14px;
-      color: #555;
-      margin: 0 ;
+      color: black;
+      margin: 0;
     }
-    .video-grid {
+
+    @media (max-width: 600px) {
+      .stat-box {
+        width: 50%;
+        max-width: 300px;
+      }
+    }
+     .video-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);;
   gap: 1.5rem;
@@ -273,26 +382,32 @@
   margin-bottom: 0.5rem;
 }
 
-    .footer {
+@media (max-width: 768px) {
+  .video-grid {
+    grid-template-columns:1fr ;
+    padding: 1rem;
+   
+  }
+}
+  .footer {
       background-color: #0a3d91;
       color: white;
-      padding: 30px ;
+      padding: 30px 15px;
       font-family: 'Segoe UI', sans-serif;
     }
 
     .footer-container {
       max-width: 1100px;
-      margin: 0 ;
+      margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 80px;
-      text-align:left;
+      justify-content: space-between;
+      gap: 40px;
     }
 
     .footer-column {
       flex: 1;
-      max-width: 250px;
+      min-width: 200px;
     }
 
     .footer h3 {
@@ -306,10 +421,9 @@
     .footer li,
     .footer a {
       font-size: 14px;
-      margin:  0;
+      margin: 0;
       color: #fff;
       text-decoration: none;
-      text-align:center;
     }
 
     .footer ul {
@@ -318,7 +432,7 @@
     }
 
     .footer li::before {
-      content: "-> ";
+      content: "→ ";
       margin-right: 5px;
       color: #ffd700;
     }
@@ -327,12 +441,8 @@
       content: none;
     }
 
-    .footer .contact li::before,
     .footer .contact li i {
-      margin-right: 10px;
-    }
-
-    .footer .contact li i {
+      margin-right: 8px;
       font-style: normal;
     }
 
@@ -345,84 +455,27 @@
       font-size: 13px;
       color: #ccc;
     }
-    @media (max-width: 1024px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
 
-  .banner {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
-  }
+    /* ✅ Responsive Styles */
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+      }
 
-  .banner-left h2 {
-    font-size: 24px;
-  }
+      
 
-  .banner-left p, .banner-left .en {
-    font-size: 14px;
-  }
+      .footer p,
+      .footer li {
+        text-align: center;
+      }
 
-  .banner-right img {
-    height: 150px;
-    margin-top: 20px;
-  }
-
-  .search-box {
-    padding: 20px;
-    margin: 20px 10px;
-  }
-
-  .search-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .top-search-row {
-    flex-direction: column;
-  }
-
-  .top-search-row input,
-  .search-button {
-    width: 100%;
-  }
-
-  .stats-container {
-    flex-direction: column;
-    align-items: center;
-    margin: 0 20px;
-  }
-
-  .stat-box {
-    width: 90%;
-    margin-bottom: 20px;
-  }
-
-  .video-grid {
-    grid-template-columns:1fr ;
-    padding: 1rem;
-  }
-
-  .footer-container {
-    flex-direction: column;
-    gap: 40px;
-    text-align: center;
-  }
-
-  .footer-column {
-    max-width: 100%;
-  }
-
-  .navbar-right {
-    align-self: flex-end;
-  }
-}
-
-</style>
+      .footer h3 {
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
    <!--Header-->
@@ -437,21 +490,17 @@
       <button class="admin-button">🔒 Admin Panel</button>
     </div>
   </div>
-<div class="banner">
+  <div class="banner">
     <div class="banner-left">
       <h2>डॉ. चिन्मय पंड्या वीडियो संग्रह</h2>
       <p>आध्यात्मिक ज्ञान · धर्म · वैदिक मार्गदर्शन · जीवन प्रबंधन</p>
       <p class="en">
         Digital repository of discourses by Dr. Chinmay Pandya on Yoga Science, Vedic Philosophy 
         and Indian Culture
-       </p>
-    </div>
-    <div class="banner-right">
-      <img src="Masal2.png" alt="Diya">
+      </p>
     </div>
   </div>
-
-   <!--Search Pannel-->
+    <!--Search Pannel-->
    <div class="search-box">
     <!-- Header Row -->
     <div class="search-header">
@@ -465,8 +514,7 @@
       <button class="search-button" onclick="applyFilters()">Search</button>
 
     </div>
-
-     <!-- Filter Row -->
+ <!-- Filter Row -->
     <div class="filter-grid">
       <div class="filter-group">
         <label for="category">Category</label>
@@ -474,6 +522,7 @@
         <option>All Categories</option>
         <option>Podcasts</option>
         <option>Pravachan</option>
+         <option>Talk & Lecture</option>
       </select>
       </div>
       
@@ -484,6 +533,7 @@
         <option>2025</option>
         <option>2024</option>
         <option>2023</option>
+         <option>2023</option>
       </select>
         </div>
        <div class="filter-group">
@@ -499,12 +549,9 @@
        <label for="keywords">Keyword</label>
       <input type="text" id="keywords" placeholder="Enter keywords">
         </div>
-       </div>
-      
-       
-  <!--Boxes-->
-  
-      <div class="stats-container">
+      </div>
+       <!-- Boxes -->
+  <div class="stats-container">
     <div class="stat-box">
       <h2>420+</h2>
       <p>Videos</p>
@@ -521,19 +568,19 @@
       <h2>2015</h2>
       <p>Archived Since</p>
     </div>
-  </div>
-
-  <!-- Video Grid -->
+</div>
+   <!-- Video Grid -->
   <section class="video-grid" id="videoGrid"></section>   
- 
-
-  <!--footer-->
  <div class="footer">
     <div class="footer-container">
       <!-- About Us -->
       <div class="footer-column">
         <h3>About Us</h3>
-        <p>Smart digital library of all videos by Dr. Chinmay <br>Pandya, where knowledge is accessible and easy to<br> find.</p>
+        <p>
+          Smart digital library of all videos by Dr. Chinmay <br>
+          Pandya, where knowledge is accessible and easy to<br>
+          find.
+        </p>
       </div>
 
       <!-- Quick Links -->
@@ -554,7 +601,7 @@
           <li><i>📧</i> dummymail@gmail.com</li>
           <li><i>📞</i> +91 XXXXXXXX</li>
           <li><i>📹</i> Shantikunj Video</li>
-          <li><i>🌐</i> Facebook Page</li> 
+          <li><i>🌐</i> Facebook Page</li>
         </ul>
       </div>
     </div>
@@ -565,8 +612,8 @@
       Last Updated: 28/6/2025
     </div>
   </div>
-    </div>
-<script>
+
+ <script>
   const SHEET_ID = '1OPQPUPENDc8CIJ07lMUCECLcwh14wrOKueByGyck9w4';
   const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
   let allVideos = [];
@@ -710,7 +757,4 @@
 </script>
 
 </body>
-</html>  
-
-
-
+</html>
